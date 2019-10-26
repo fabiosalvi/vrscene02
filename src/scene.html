@@ -1,0 +1,53 @@
+<!-- <a-scene environment="preset: forest; seed: 123; shadowSize: 5"> -->
+<a-scene>
+  <require path="templates/assets.html"></require>
+
+  <!-- CAMERA -->
+  <a-entity camera look-controls position="0 1.6 0">
+    <a-cursor color="white"></a-cursor>
+  </a-entity>
+
+  <!-- STAGE -->
+  <a-entity id="stage">
+    <a-entity id="env1" visible="true">
+      <a-entity environment="preset: default;"></a-entity>
+    </a-entity>
+    <a-entity id="env2" visible="false">
+      <a-entity environment="preset: dream;"></a-entity>
+    </a-entity>
+
+    <a-entity tiles></a-entity>
+
+    <a-sphere
+      color="#3cf7ed"
+      wireframe="true"
+      radius="0.5"
+      position="0 0.5 -20"
+      rollandjitter
+    >
+    </a-sphere>
+
+    <a-entity curve="closed: true; type: line;" id="track1" visible="false">
+      <a-curve-point position="-30 3 -30"></a-curve-point>
+      <a-curve-point position="0 10 -30"></a-curve-point>
+      <a-curve-point position="30 3 -30"></a-curve-point>
+      <a-curve-point position="30 3 30"></a-curve-point>
+      <a-curve-point position="0 3 30"></a-curve-point>
+    </a-entity>
+
+    <a-entity
+      id="track2"
+      clone-along-curve="curve: #track1; spacing: 0.5; scale: 1 1 1; rotation: 0 10 0;"
+      geometry="primitive:sphere; radius:0.1"
+      material="color: #333; roughness: 1; metalness: 0.5;"
+    ></a-entity>
+
+    <a-entity
+      id="tracker"
+      visible="false"
+      alongpath="curve: #track1; loop: true; dur: 40000; rotate: true;"
+    >
+      <a-sphere color="#3cf7ed" wireframe="true" radius="2" roll> </a-sphere>
+    </a-entity>
+  </a-entity>
+</a-scene>
