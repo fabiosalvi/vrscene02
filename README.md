@@ -1,4 +1,4 @@
-## aframe-super-hot-loader-example
+## aframe-starter-kit
 
 ```
 npm install
